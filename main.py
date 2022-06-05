@@ -53,7 +53,8 @@ def sort_files(files):
     return full_text
 
 
-full_text = sort_files(['1.txt', '2.txt', '3.txt'])
+files = ['1.txt', '2.txt', '3.txt']
+full_text = sort_files(files)
 
 
 def resul_txt(full_text):
