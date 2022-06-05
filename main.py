@@ -40,33 +40,30 @@ def get_shop_list_by_dishes(dishes, person):
 get_shop_list_by_dishes(['Омлет', 'Омлет'], 1)
 
 
-with open('1.txt', 'r', encoding='utf-8') as file_obj:
-    text1 = []
-    for line in file_obj:
-        text1.append(line.strip())
+def sort_files(files):
+    full_text = []
+    for file in files:
+        with open(file, 'r', encoding='utf-8') as file_obj:
+            text = []
+            text.append(file)
+            for line in file_obj:
+                text.append(line.strip())
+        full_text.append(text)
+        sorted(full_text)
+    return full_text
 
 
-with open('2.txt', 'r', encoding='utf-8') as file_obj:
-    text2 = []
-    for line in file_obj:
-        text2.append(line.strip())
+full_text = sort_files(['1.txt', '2.txt', '3.txt'])
 
 
-with open('3.txt', 'r', encoding='utf-8') as file_obj:
-    text3 = []
-    for line in file_obj:
-        text3.append(line.strip())
+def resul_txt(full_text):
+    with open('result.txt', 'w', encoding='utf-8') as file_obj:
+        for text in full_text:
+            file_obj.write(str(len(text)-1))
+            file_obj.write('\n')
+            for line in text:
+                file_obj.write(line)
+                file_obj.write('\n')
 
 
-# def func(one, two, three):
-#     with open('result.txt', 'a', encoding='utf-8') as file_obj:
-#         result = [one, two, three]
-#         for i in result:
-#             maxim = max(result)
-#             for item in maxim:
-#                 file_obj.write(item)
-#             result.remove(maxim)
-#         file_obj.write('\n')
-#
-#
-# func(text1, text2, text3)
+resul_txt(full_text)
